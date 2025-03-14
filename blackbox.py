@@ -78,7 +78,7 @@ def record_screen(monitor_index=0):
 
 
 def main():
-	"""메인 함수 - 모니터 선택 후 녹화"""
+	"""메인 함수 - 모니터 선택 후 녹화  """
 	monitor_index = 1  # 캡처하려는 모니터 인덱스 (0 = 첫 번째 모니터)
 	while True:
 		print(f"모니터 {monitor_index + 1} 녹화 시작...")
