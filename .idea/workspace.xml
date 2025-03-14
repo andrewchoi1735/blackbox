@@ -5,19 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="61e85137-cc93-4119-ab49-c35ef6352446" name="변경" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/recordings/file_utility.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/recordings/recording_20250314_115412.avi" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/recordings/recording_20250314_115416.avi" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/recordings/recording_20250314_115419.avi" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/recordings/recording_20250314_115422.avi" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/recordings/recording_20250314_115425.avi" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/recordings/recording_20250314_115428.avi" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/recordings/recording_20250314_115431.avi" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/recordings/recording_20250314_115434.avi" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/recordings/recording_20250314_115437.avi" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/recordings/recording_20250314_115441.avi" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/recordings/recording_20250314_115444.avi" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/recordings/test" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,7 +75,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1741911438029</updated>
-      <workItem from="1741911439053" duration="8985000" />
+      <workItem from="1741911439053" duration="9140000" />
     </task>
     <servers />
   </component>
