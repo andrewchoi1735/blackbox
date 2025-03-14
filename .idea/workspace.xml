@@ -5,7 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="61e85137-cc93-4119-ab49-c35ef6352446" name="변경" comment="">
-      <change afterPath="$PROJECT_DIR$/recordings/test" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/blackbox/Analysis-00.toc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/blackbox/EXE-00.toc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/blackbox/PKG-00.toc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/blackbox/PYZ-00.pyz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/blackbox/PYZ-00.toc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/blackbox/base_library.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/blackbox/blackbox.pkg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/blackbox/warn-blackbox.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/blackbox/xref-blackbox.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/recordings/test" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,7 +86,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1741911438029</updated>
-      <workItem from="1741911439053" duration="9140000" />
+      <workItem from="1741911439053" duration="9475000" />
     </task>
     <servers />
   </component>
