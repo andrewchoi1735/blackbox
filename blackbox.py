@@ -85,8 +85,8 @@ def main():
 		record_screen(monitor_index)
 		print("1분 녹화 저장 완료, 다음 녹화로 이어집니다...")
 
-		# 오래된 파일 정리 실행
-		clean_old_files(output_directory, max_files=3)
+		# 오래된 파일 정리 실행 (최대 개수 30개 지정)
+		clean_old_files(output_directory, max_files=30)
 
 
 if __name__ == "__main__":
