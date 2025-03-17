@@ -19,10 +19,11 @@ sys.stderr = open(os.devnull, "w")  # stderr로 전달되는 메시지 무시
 class ScreenRecorderApp:
 	def __init__(self, root):
 		# 기본 설정
+		self.codec = None
 		self.root = root
 		self.is_recording = False
 		self.stop_recording = False
-		self.fps = 15
+		self.fps = 10
 		self.output_directory = "./recordings"
 		self.monitor_index = None
 		self.record_duration = None
@@ -33,7 +34,7 @@ class ScreenRecorderApp:
 
 		# GUI 설정
 		self.root.title("Black Box")
-		self.root.geometry("400x600")
+		self.root.geometry("400x650")
 		ctk.set_appearance_mode("Dark")
 		ctk.set_default_color_theme("blue")
 
@@ -61,7 +62,7 @@ class ScreenRecorderApp:
 		self.options_frame.grid_columnconfigure(0, weight=1)
 		self.options_frame.grid_columnconfigure(1, weight=2)
 
-		self.monitor_label = ctk.CTkLabel(master=self.options_frame, text="모니터 선택:", font=("Arial", 14))
+		self.monitor_label = ctk.CTkLabel(master=self.options_frame, text="모니터 선택", font=("Arial", 14))
 		self.monitor_label.grid(row=0, column=0, padx=10, pady=10, sticky="w")
 
 		self.monitor_dropdown = ctk.CTkOptionMenu(
@@ -73,8 +74,25 @@ class ScreenRecorderApp:
 		)
 		self.monitor_dropdown.grid(row=0, column=1, padx=10, pady=10, sticky="we")
 
+		# 프레임 내부 구성 - 코덱 선택 (추가)
+		self.codec_label = ctk.CTkLabel(master=self.options_frame, text="코덱 선택", font=("Arial", 14))
+		self.codec_label.grid(row=2, column=0, padx=10, pady=10, sticky="w")
+
+		# 코덱 선택 드롭다운 메뉴
+		self.codec_dropdown = ctk.CTkOptionMenu(
+			master=self.options_frame,
+			values=["MPEG-4 (mp4)", "XVID (avi)", "VP8 (webm)"],
+			width=150,
+			dropdown_fg_color="#000000",
+			dropdown_hover_color="#4169e1",
+			fg_color="#000000",  # 드롭다운 버튼의 배경색 (메뉴 표시 전 기본 색상)
+			button_color="#2E3A46",  # 드롭다운 버튼 자체의 색상
+			button_hover_color="#4169E1"  # 드롭다운 버튼의 호버 상태 배경색
+		)
+		self.codec_dropdown.grid(row=2, column=1, padx=10, pady=10, sticky="we")
+
 		# 프레임 내부 구성 - 녹화 시간
-		self.duration_label = ctk.CTkLabel(master=self.options_frame, text="녹화 시간 (초):", font=("Arial", 14))
+		self.duration_label = ctk.CTkLabel(master=self.options_frame, text="녹화 시간 (초)", font=("Arial", 14))
 		self.duration_label.grid(row=1, column=0, padx=10, pady=10, sticky="w")
 
 		self.duration_entry = ctk.CTkEntry(master=self.options_frame, placeholder_text="예: 60")
@@ -149,24 +167,45 @@ class ScreenRecorderApp:
 				self.status_label.configure(text="Error: 녹화 시간은 1초 이상이어야 합니다!", text_color='red')
 				return
 
+			# 사용자가 선택한 코덱 값 가져오기
+			selected_codec = self.codec_dropdown.get()
+			if selected_codec == "MPEG-4 (mp4)":
+				self.codec = "mp4v"
+			elif selected_codec == "XVID (avi)":
+				self.codec = "XVID"
+			elif selected_codec == "VP8 (webm)":
+				self.codec = "VP80"
+			else:
+				raise ValueError("지원되지 않는 코덱")
+			
+			# 녹화 준비 완료
 			self.is_recording = True
 			self.stop_recording = False
+			# 버튼 및 설정 UI 비활성화
 			self.start_button.configure(state="disabled")
+			self.monitor_dropdown.configure(state="disabled")  # 모니터 선택 비활성화
+			self.duration_entry.configure(state="disabled")  # 녹화 시간 입력 비활성화
+			self.codec_dropdown.configure(state="disabled")  # 코덱 선택 비활성화
 			self.stop_button.configure(state="normal")
-			self.status_label.configure(text="녹화중 입니다...", text_color='green')
+			self.status_label.configure(text="녹화중 입니다...", text_color="green")
 
 			recording_thread = threading.Thread(target=self.record_screen_loop)
 			recording_thread.start()
-		except ValueError:
-			self.status_label.configure(text="Error: 녹화 시간을 입력해 주세요.", text_color='red')
+		except ValueError as e:
+			self.status_label.configure(text=f"Error: {str(e)}", text_color='red')
 
 	def stop(self):
 		"""녹화를 종료"""
 		if self.is_recording:
 			self.stop_recording = True
 			self.status_label.configure(text="녹화 종료...", text_color='white')
-			self.start_button.configure(state="normal")
-			self.stop_button.configure(state="disabled")
+			# 버튼 및 설정 UI 다시 활성화
+			self.start_button.configure(state="normal")  # 녹화 시작 버튼 활성화
+			self.monitor_dropdown.configure(state="normal")  # 모니터 선택 활성화
+			self.duration_entry.configure(state="normal")  # 녹화 시간 입력 활성화
+			self.codec_dropdown.configure(state="normal")  # 코덱 선택 활성화
+			self.stop_button.configure(state="disabled")  # 녹화 중지 버튼 비활성화
+
 
 	def record_screen_loop(self):
 		"""녹화를 반복 실행"""
@@ -193,34 +232,56 @@ class ScreenRecorderApp:
 		target_monitor = monitors[self.monitor_index]
 		x, y, width, height = target_monitor.x, target_monitor.y, target_monitor.width, target_monitor.height
 
-		# 저장 파일 이름 정의
+		# 선택된 코덱 및 파일 확장자 처리
+		if self.codec == "mp4v":
+			file_extension = ".mp4"
+		elif self.codec == "XVID":
+			file_extension = ".avi"
+		elif self.codec == "VP80":
+			file_extension = ".webm"
+		else:
+			self.status_label.configure(text="Error: 잘못된 코덱 선택", text_color='red')
+			return
+
+		# 저장 파일 이름 정의 (선택된 코덱에 따라 확장자 변경)
 		timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-		video_filename = os.path.join(self.output_directory, f"recording_{timestamp}.mp4")
-		# OpenCV VideoWriter 설정
-		fourcc = cv2.VideoWriter_fourcc(*"MP4V")
+		video_filename = os.path.join(self.output_directory, f"recording_{timestamp}{file_extension}")
+
+		# OpenCV VideoWriter 설정 (선택된 코덱 사용)
+		fourcc = cv2.VideoWriter_fourcc(*self.codec)
 		out = cv2.VideoWriter(video_filename, fourcc, self.fps, (width, height))
 
-		start_time = time.time()
 		with mss.mss() as sct:
 			monitor = {"top":y, "left":x, "width":width, "height":height}
 
-			while not self.stop_recording:
+			# 녹화 종료 시간 계산
+			start_time = time.time()
+			end_time = start_time + self.record_duration  # 종료 시간
+
+			sct.compression_level = 1  # 최소화된 압축(속도 증가)
+
+			while True:
 				try:
+					current_time = time.time()  # 현재 시간 측정
+					if current_time >= end_time or self.stop_recording:  # 종료 조건
+						break
+
 					# 화면 캡처
 					screenshot = np.array(sct.grab(monitor))
 					frame = cv2.cvtColor(screenshot, cv2.COLOR_BGRA2BGR)
 					out.write(frame)
 
-					# 남은 시간 계산
-					elapsed_time = time.time() - start_time
+					# 남은 시간 계산 및 상태 업데이트
+					elapsed_time = current_time - start_time
 					remaining_time = max(0, int(self.record_duration - elapsed_time))
-					self.status_label.configure(text=f"녹화중... 남은시간: {remaining_time}s")
+					if int(elapsed_time) % 1 == 0:  # 매 초마다 실행
+						self.status_label.configure(text=f"녹화중... 남은시간: {remaining_time}s")
 
-					# 녹화 시간 초과 시 종료
-					if remaining_time <= 0:
-						break
-
-					time.sleep(1 / self.fps)
+					# 프레임 간격 대기 (FPS 조정)
+					target_time = start_time + (elapsed_time + (1 / self.fps))  # 다음 프레임의 목표 시간 계산
+					delay = target_time - time.time()  # 현재 시간과 목표 시간의 차이 계산
+					if delay > 0:
+						time.sleep(delay)
 				except Exception as e:
 					self.status_label.configure(text=f"Error: {e}")
 					break

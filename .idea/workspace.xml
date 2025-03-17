@@ -5,16 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="61e85137-cc93-4119-ab49-c35ef6352446" name="변경" comment="">
-      <change afterPath="$PROJECT_DIR$/record.ico" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/blackbox.py" beforeDir="false" afterPath="$PROJECT_DIR$/blackbox.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/blackbox.spec" beforeDir="false" afterPath="$PROJECT_DIR$/blackbox.spec" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/blackbox/Analysis-00.toc" beforeDir="false" afterPath="$PROJECT_DIR$/build/blackbox/Analysis-00.toc" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/blackbox/EXE-00.toc" beforeDir="false" afterPath="$PROJECT_DIR$/build/blackbox/EXE-00.toc" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/blackbox/PKG-00.toc" beforeDir="false" afterPath="$PROJECT_DIR$/build/blackbox/PKG-00.toc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/blackbox/PYZ-00.pyz" beforeDir="false" afterPath="$PROJECT_DIR$/build/blackbox/PYZ-00.pyz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/blackbox/PYZ-00.toc" beforeDir="false" afterPath="$PROJECT_DIR$/build/blackbox/PYZ-00.toc" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/blackbox/base_library.zip" beforeDir="false" afterPath="$PROJECT_DIR$/build/blackbox/base_library.zip" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/blackbox/blackbox.pkg" beforeDir="false" afterPath="$PROJECT_DIR$/build/blackbox/blackbox.pkg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/blackbox/warn-blackbox.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/blackbox/warn-blackbox.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/blackbox/xref-blackbox.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/blackbox/xref-blackbox.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/blackbox.exe" beforeDir="false" afterPath="$PROJECT_DIR$/dist/blackbox.exe" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -112,6 +115,6 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/BlackBox$_.coverage" NAME="이미지 변환 커버리지 결과" MODIFIED="1742191348398" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/실험실" />
-    <SUITE FILE_PATH="coverage/BlackBox$blackbox.coverage" NAME="blackbox 커버리지 결과" MODIFIED="1742192343280" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/BlackBox$blackbox.coverage" NAME="blackbox 커버리지 결과" MODIFIED="1742198639689" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
