@@ -48,7 +48,7 @@ class ScreenRecorderApp:
 		# 상태 레이블 (row 0)
 		self.status_label = ctk.CTkLabel(
 			master=self.root,
-			text="이슈 해결용 화면녹화 프로그램입니다.",
+			text="이슈 관찰용 화면녹화 프로그램입니다.",
 			font=("Arial", 16, "bold"),
 		)
 		self.status_label.grid(row=0, column=0, pady=(20, 10), padx=20, sticky="nwe")
@@ -87,13 +87,13 @@ class ScreenRecorderApp:
 
 		# 녹화 시작 버튼
 		self.start_button = ctk.CTkButton(
-			master=self.button_frame, text="녹화 시작", command=self.start_recording, height=40, fg_color="#adff2f", text_color="black", font=("Arial", 14, "bold")
+			master=self.button_frame, text="녹화 시작", command=self.start_recording, height=40, fg_color="red", text_color="white", font=("Arial", 14, "bold")
 		)
 		self.start_button.grid(row=0, column=0, padx=(10, 5), pady=10, sticky="nswe")
 
 		# 녹화 종료 버튼
 		self.stop_button = ctk.CTkButton(
-			master=self.button_frame, text="녹화 종료", command=self.stop, state="disabled", height=40, fg_color="#f08080", text_color="black", font=("Arial", 14, "bold")
+			master=self.button_frame, text="녹화 종료", command=self.stop, state="disabled", font=("Arial", 14, "bold")
 		)
 		self.stop_button.grid(row=0, column=1, padx=(5, 10), pady=10, sticky="nswe")
 
@@ -115,7 +115,7 @@ class ScreenRecorderApp:
 
 		# 폴더 열기 버튼 (row 4)
 		self.open_dir_button = ctk.CTkButton(
-			master=self.root, text="녹화된 폴더 열기", command=self.open_output_directory, height=40
+			master=self.root, text="저장된 폴더 열기", command=self.open_output_directory, height=40
 		)
 		self.open_dir_button.grid(row=4, column=0, pady=(10, 20), padx=20, sticky="we")
 
@@ -249,6 +249,13 @@ class ScreenRecorderApp:
 
 
 if __name__ == "__main__":
+
 	app = ctk.CTk()
+	icon_path = os.path.join(os.path.dirname(__file__), "test.ico")
+	if os.path.exists(icon_path):
+		app.iconbitmap(icon_path)
+	else:
+		print("아이콘 없으므로, 기본 아이콘 실행")
+	
 	ScreenRecorderApp(app)
 	app.mainloop()
