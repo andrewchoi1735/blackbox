@@ -5,9 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="61e85137-cc93-4119-ab49-c35ef6352446" name="변경" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blackbox.py" beforeDir="false" afterPath="$PROJECT_DIR$/blackbox.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/recordings/test" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,7 +78,7 @@
       <option name="presentableId" value="Default" />
       <updated>1741911438029</updated>
       <workItem from="1741911439053" duration="9752000" />
-      <workItem from="1742168570143" duration="3855000" />
+      <workItem from="1742168570143" duration="4026000" />
     </task>
     <servers />
   </component>
