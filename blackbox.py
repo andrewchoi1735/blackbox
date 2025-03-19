@@ -295,8 +295,7 @@ class ScreenRecorderApp:
 
 	def clean_old_files(self):
 		"""만약 파일 수가 30개를 넘으면 가장 오래된 파일을 삭제"""
-		file_list = [os.path.join(self.output_directory, f) for f in os.listdir(self.output_directory) if
-		             os.path.isfile(os.path.join(self.output_directory, f))]
+		file_list = [os.path.join(self.output_directory, f) for f in os.listdir(self.output_directory) if os.path.isfile(os.path.join(self.output_directory, f))]
 
 		# 파일을 수정 시간 기준으로 정렬
 		file_list.sort(key=os.path.getmtime)
