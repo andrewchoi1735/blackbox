@@ -15,6 +15,7 @@ os.environ["OPENCV_LOG_LEVEL"] = "1"  # OpenCV 로그 (1: 경고 수준으로 �
 os.environ["OPENCV_FFMPEG_DEBUG"] = "0"  # FFMPEG 로그 수준 최소화
 sys.stderr = open(os.devnull, "w")  # stderr로 전달되는 메시지 무시
 
+##깃 허브 테스트 용
 
 class ScreenRecorderApp:
 	def __init__(self, root):
